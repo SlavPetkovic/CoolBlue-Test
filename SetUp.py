@@ -9,7 +9,7 @@ from sqlalchemy import *
 import datetime
 
 # Create engine and automap_base
-engine = create_engine('sqlite:///Neutrino.db', echo=True)
+engine = create_engine('sqlite:///data/Neutrino.db', echo=True)
 conn = engine.connect()
 
 # Create Table SensorsData using SQLAchemy
@@ -48,3 +48,5 @@ session.add(test)
 
 # Commit test to the database
 session.commit()
+
+
