@@ -1,16 +1,24 @@
-# This is a sample Python script.
-
 # Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from multiprocessing import Process
+from lib.motion import motion
+from lib.sensors import sensing
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def cbmotion():
+        motion()
+
+def cbsensing():
+    sensing()
+    
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    p1 = Process(target = cbmotion)
+    p1.start()
+    p2 = Process(target = cbsensing)
+    p2.start()
+    
+    
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
