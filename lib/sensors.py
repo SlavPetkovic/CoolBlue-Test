@@ -7,7 +7,7 @@ def sensing():
     import adafruit_bme680
     import datetime
     import adafruit_veml7700
-
+    
     i2c = board.I2C()  # uses board.SCL and board.SDA
     veml7700 = adafruit_veml7700.VEML7700(i2c)
     # Create library object using our Bus I2C port
@@ -16,7 +16,7 @@ def sensing():
     # change this to match the location's pressure (hPa) at sea level
     bme680.sea_level_pressure = 1013.25
     # Define database name to which data will be stored
-    dbname = 'Neutrino.db'
+    dbname = 'data/Neutrino.db'
     # Using while loop capture the data in variables and storwe it in database
     while True:
         # Create the now variable to capture the current moment
@@ -35,9 +35,7 @@ def sensing():
             "INSERT INTO SensorsData (TIMESTAMP, TEMPERATURE, GAS, HUMIDITY, PRESSURE, ALTITUDE, LUMINOSITY) values(?,?,?,?,?,?,?)",
             (TIMESTAMP, TEMPERATURE, GAS, HUMIDITY, PRESSURE, ALTITUDE, LUMINOSITY))
         conn.commit()
-        # Test by printing data from table BME_DATA
-        # for row in curs.execute("SELECT * FROM SensorsData"):
-        # print (row)
         conn.close()
         time.sleep(1)
         print(f"{TIMESTAMP}, {TEMPERATURE}, {GAS}, {HUMIDITY}, {PRESSURE}, {ALTITUDE}, {LUMINOSITY}")
+                    

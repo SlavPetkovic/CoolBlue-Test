@@ -5,7 +5,7 @@ from lib.sensors import sensing
 
 # Using multiprocessing we are going to execute both function at the same time
 def cbmotion():
-        motion()
+    motion()
 def cbsensing():
     sensing()
 

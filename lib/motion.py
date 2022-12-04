@@ -31,6 +31,7 @@ def motion():
     GPIO.output(rc2, True)
     GPIO.setwarnings(False)
     camera = PiCamera()
+    #camera.close()
     screen = pygame.display.set_mode([1, 1])
 
     cam_state = 'off'
@@ -48,6 +49,10 @@ def motion():
 
                     elif event.key == pygame.K_q:
                         pygame.quit()
+                        camera.close()
+                        kit1.motor1.thorttle = 0
+                        kit2.motor1.thorttle = 0
+                        
                         
                     elif event.key == pygame.K_r:
                         if cam_state == 'off':
@@ -55,7 +60,10 @@ def motion():
                             cam_state = 'on'
                         elif cam_state == 'on':
                             camera.stop_preview()
+                            camera.close()
                             cam_state = 'off'
+                            
+                            
 
                     elif event.key == pygame.K_l:
                         if led_state == 'off':
@@ -73,4 +81,9 @@ def motion():
 
     finally:
         GPIO.cleanup()
+        camera.stop_preview()
+        camera.close()
+        
+        cam_state = 'off'
+        led_state = 'off'
 
