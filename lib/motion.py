@@ -63,7 +63,6 @@ def motion():
                             camera.close()
                             cam_state = 'off'
                             
-                            
 
                     elif event.key == pygame.K_l:
                         if led_state == 'off':
