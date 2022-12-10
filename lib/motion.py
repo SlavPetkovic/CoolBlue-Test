@@ -46,14 +46,12 @@ def motion():
                         kit1.motor1.throttle = 1.0
                         kit2.motor1.throttle = 1.0
 
-
                     elif event.key == pygame.K_q:
                         pygame.quit()
                         camera.close()
                         kit1.motor1.thorttle = 0
                         kit2.motor1.thorttle = 0
-                        
-                        
+
                     elif event.key == pygame.K_r:
                         if cam_state == 'off':
                             camera.start_preview()
